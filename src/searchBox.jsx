@@ -82,11 +82,10 @@ export default function searchBox( { updateInfo } )
                     color="black" name="city"
                     value={city} required
                     onChange={hndlCity} />
-
                 <br />
 
                 <Button variant="contained" sx={{marginTop : "1rem"}} type="submit">Search</Button>
-                <p style={{color:"#902e2e"}} className="font-medium">{error === true ? "The Area is not available" : ""}</p>
+                <p style={{color:"#902e2e"}} className="font-medium">{error === true ? "The Area is not available" : " "}</p>
             </form>
         </div>
         

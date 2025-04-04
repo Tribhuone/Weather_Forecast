@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body{
+    overflow:hidden;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -61,6 +65,14 @@ h2{
     border-radius: 10px;
 }
 
+.extra-interface{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+}
+
 .main-mera{
     width: 20%;
     height: 85%;
@@ -70,9 +82,11 @@ h2{
     padding-top: .4rem;
 }
 
-/*________________________________   Responsive DEsign _____________________________ */
+/* ______________________________                     Responsive Design                        __________________________ */
 
-@media(max-width: 430px)
+/*________________________________   MObile Phone _____________________________ */
+
+@media only screen and (max-width: 600px)
 {
     body{
         background-color: rgb(124, 164, 234);
@@ -93,12 +107,8 @@ h2{
         margin: .8rem 0rem .5rem 0rem;
     }
 
-    .backGround{
-        height: 90vh;
-    }
-
     .main-mera{
-        width: 30rem;
+        width: 100%;
         height: 100%;
         border-radius: 0;
     }
@@ -108,4 +118,151 @@ h2{
         height: 100%;
     }
 
+    .mainCard{
+        margin-top: 1rem;
+    }
+}
+
+
+/* ____________________________________   For IPAD Mini __________________________________________  */
+
+@media only screen and (min-width: 600px)
+{
+    .backGround{
+        padding-top: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .extra-interface{
+        justify-content: space-around;
+        height: 40%;
+    }
+
+    .main-mera{
+        height:50%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 1rem;
+    }
+
+    .searchBox{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        height: 40%;
+        width: 50%;
+    }
+
+    .info-box{
+        height: 100%;
+        margin-top:-.1%;
+        width:48%;
+    }
+
+    .mainCard{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* ______________________________________ IPAD Pro ______________________________ */
+
+@media only screen and (min-width: 900px)
+{
+    .backGround{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .extra-interface{
+        height: 40%;
+        justify-content: space-around;
+    }
+
+    .main-mera{
+        height:50%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 1rem;
+    }
+
+    .searchBox{
+        margin: 0 -3rem 0 3rem;
+        height: 45%;
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .info-box{
+        height: 100%;
+        margin-top:-.1%;
+        width:48%;
+    }
+
+    .mainCard{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+
+/* ______________________________________  */
+
+@media only screen and (min-width: 1100px)
+{
+    .backGround{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .extra-interface{
+        padding: .3rem;
+        justify-content: space-around;
+        height: 65%;
+    }
+
+    .searchBox{
+        justify-content: space-evenly;
+        margin: 0;
+        padding: 0;
+        width: 70%;
+    }
+
+    .main-mera{
+        flex-direction: column;
+        width: 30%;
+        height: 95%;
+        padding: 0;
+    }
+
+    .info-box{
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .mainCard{
+        width: 100%;
+    }
 }
