@@ -4,16 +4,16 @@ import "./style.css";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import '@fontsource/roboto/500.css';
+import axios from "axios";
 
 export default function searchBox( { updateInfo } )
 {
     const [city , setCity] = useState("");
 
-    const [error , setError] = useState("");
+    const [error , setError] = useState(false);
 
     const apiKey = "16150b9ee8ba28f9a778d15eef1d15a2";
     let API_URL = "https://api.openweathermap.org/data/2.5/weather?";
-    // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
     function convertTimestamptoTime(unixTimestamp) {
     
@@ -30,30 +30,29 @@ export default function searchBox( { updateInfo } )
     
 
     let getWeatherInfo = async () => {
-        try {
-            const fetchData = await fetch(`${API_URL}q=${city}&appid=${apiKey}&units=metric`);
-            let rawData = await fetchData.json();
+        const fetchData = await axios.get(`${API_URL}q=${city}&appid=${apiKey}&units=metric`)
+        .catch( (err) => {
+            console.log("The Area is not available " + err);
+            setError(true);
+        });
+        let rawData = fetchData.data;
 
-            let result = {
-                city : rawData.name,
-                temp : rawData.main.temp,
-                humidity : rawData.main.humidity,
-                feels_like : rawData.main.feels_like,
-                wind : Math.round(rawData.wind.speed * 18/5),
-                descript : rawData.weather[0].description,
-                weather : rawData.weather[0].main,
-                country : rawData.sys.country,
-                sunrise : convertTimestamptoTime(rawData.sys.sunrise),
-                sunset : convertTimestamptoTime(rawData.sys.sunset),
-                time : convertTimestamptoTime(rawData.dt),
-            };
-            console.log(result);
-            return result;
-        }
-        catch(err){
-            console.error(err);
-            setError("No Such Places Found!");
-        }
+        let result = {
+            city : rawData.name,
+            temp : rawData.main.temp,
+            humidity : rawData.main.humidity,
+            feels_like : rawData.main.feels_like,
+            wind : Math.round(rawData.wind.speed * 18/5),
+            descript : rawData.weather[0].description,
+            weather : rawData.weather[0].main,
+            country : rawData.sys.country,
+            sunrise : convertTimestamptoTime(rawData.sys.sunrise),
+            sunset : convertTimestamptoTime(rawData.sys.sunset),
+            time : convertTimestamptoTime(rawData.dt),
+        };
+        console.log(result);
+        return result;
+
     }
 
     function hndlCity(event)
@@ -63,21 +62,18 @@ export default function searchBox( { updateInfo } )
 
     async function hndlSubmit(event)
     {
-        try{
-            event.preventDefault();
-            setCity("");
-            console.log(city);
-            let newInfo = await getWeatherInfo();
-            updateInfo(newInfo);
-        }
-        catch(err){
-            console.error(err);
-        }
+        event.preventDefault();
+        setCity("");
+        setError(false);
+        console.log(city);
+        let newInfo = await getWeatherInfo();
+        updateInfo(newInfo);
     }
 
     return(
         <div className="searchBox">
-            <h2 >Search for the weather</h2>
+            <h2 className="title-name">Search for the weather</h2>
+            <h2 className="app-name">WEATHER</h2>
 
             <form action="#" onSubmit={hndlSubmit}>
 
@@ -85,13 +81,12 @@ export default function searchBox( { updateInfo } )
                     variant="outlined" 
                     color="black" name="city"
                     value={city} required
-                    onChange={hndlCity} 
-                    placeholder="Bhopal" />
+                    onChange={hndlCity} />
 
                 <br />
 
                 <Button variant="contained" sx={{marginTop : "1rem"}} type="submit">Search</Button>
-                <p>{error}</p>
+                <p style={{color:"#902e2e"}} className="font-medium">{error === true ? "The Area is not available" : ""}</p>
             </form>
         </div>
         

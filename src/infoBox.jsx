@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 
 export default function CityInformation( { info } )
 {
-    let INIT_IMG = "https://t4.ftcdn.net/jpg/05/38/39/11/360_F_538391124_m2etBmoq0zlYP9pq4F7kvZ3ja8IfatFM.jpg";
     let sunny_IMG = "original-406d074122aa4f875cd3c6182a6c5171.gif";
     let rainy_IMG = "rainy season.gif";
     let cold_IMG = "giphy.gif";
@@ -16,14 +15,13 @@ export default function CityInformation( { info } )
 
     return(
         <div className="info-box">
-
-            <Card sx={{ maxWidth: 355 , borderRadius: "1rem"}}>
+            <Card sx={{ maxWidth: 500 , borderRadius: "1rem"}} className="mainCard">
                 <CardMedia
-                    sx={{ height: 170 }}
+                    sx={{ height: 200 }}
                     image={info.humidity > 80 ? rainy_IMG : (info.temp === null ? find_IMG : (info.temp > 15 ? sunny_IMG : cold_IMG))}
                     title="green iguana"
                 />
-                <CardContent className="bg-blue-200 text-purple-800">
+                <CardContent className="bg-blue-200 text-purple-800 card-content">
                     <Typography gutterBottom variant="h5" component="div">
                             {info.city} &nbsp;
                             <p className="text-base capitalize text-purple-800" style={{display:"inline-block"}}><b>{info.descript}</b></p>
@@ -41,7 +39,7 @@ export default function CityInformation( { info } )
 
                             <p><b>Sunset &nbsp; :</b> {info.sunset}</p>
 
-                            <p className="capitalize"><b> The Weather can be described as {info.weather} and feels like {info.feels_like}&deg;C. </b></p>
+                            <p className="capitalize"><b> The Weather as {info.weather} and feels like {info.feels_like}&deg;C. </b></p>
                     </Typography>
                 </CardContent>
             </Card>

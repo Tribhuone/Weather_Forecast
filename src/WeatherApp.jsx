@@ -17,7 +17,7 @@ export default function Weather()
         temp : null,
         humidity : "0",
         wind : "0",
-        weather : "0",
+        weather : "_",
         time : "00 : 00",
     });
 
@@ -34,11 +34,9 @@ export default function Weather()
         source = "night Time.png";
     }
 
-    let IMG = "cc7f50841bb97e10d159394030cc44c4.jpg";
-
     return(
         <div className="backGround">
-            <div>
+            <div className="extra-interface">
                 <h1 className="head-name text-6xl font-medium">Weather App</h1>
                 <img src={source} alt="" className="myImg"/>
             </div>

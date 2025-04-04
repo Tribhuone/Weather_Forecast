@@ -7,7 +7,6 @@
 
 .head-name{
     margin: -2rem 0 2rem 0;
-
 }
 
 h2{
@@ -20,15 +19,20 @@ h2{
 }
 
 .searchBox{
-    height: 8rem;
+    height: 10rem;
+}
+
+.app-name{
+    display: none;
 }
 
 .info-box{
-    margin-top: 2rem;
+    margin-top: 3rem;
     display : flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    height: 27.4rem;
 }
 
 .each-info p{
@@ -42,6 +46,15 @@ h2{
     align-items: center;
 }
 
+.card-content{
+    height: 100%;
+}
+
+.mainCard{
+    width: 100%;
+    height: 100%;
+}
+
 .myImg{
     object-fit: contain;
     width: 28rem;
@@ -49,8 +62,50 @@ h2{
 }
 
 .main-mera{
+    width: 20%;
+    height: 85%;
     background-color: rgb(124, 164, 234);
     color: black;
     border-radius: 1rem;
     padding-top: .4rem;
+}
+
+/*________________________________   Responsive DEsign _____________________________ */
+
+@media(max-width: 430px)
+{
+    body{
+        background-color: rgb(124, 164, 234);
+        overflow: hidden;
+    }
+
+    .extra-interface{
+        display: none;
+    }
+
+    .title-name , .head-name , .myImg{
+        display: none;
+    }
+
+    .app-name{
+        display: inline-block;
+        font-size: 2rem;
+        margin: .8rem 0rem .5rem 0rem;
+    }
+
+    .backGround{
+        height: 90vh;
+    }
+
+    .main-mera{
+        width: 30rem;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .info-box{
+        width: 100%;
+        height: 100%;
+    }
+
 }
