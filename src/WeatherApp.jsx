@@ -26,7 +26,7 @@ export default function Weather()
     }
 
     let source;
-    if(weatherInfo.time > "06 : 00" && weatherInfo.time < "18 : 00")
+    if(weatherInfo.time > weatherInfo.sunrise && weatherInfo.time < weatherInfo.sunset)
     {
         source = "sunLight.gif";
     }
